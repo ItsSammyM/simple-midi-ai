@@ -8,7 +8,6 @@ const OUTPUT_DIR: &str = "../data/input/cary/";
 const MAX_PITCHES: usize = 110;
 const MIN_PITCH: i32 = 22;
 const MAX_TIME_STEPS: usize = 150_000;
-const OUTPUT_LINE_LENGTH: usize = 50;
 
 #[derive(Clone, Copy, PartialEq)]
 enum NoteState {
@@ -127,7 +126,7 @@ impl MidiProcessor {
             
             let mut output_file = File::create(output_path).expect("Failed to create output file");
             
-            for (time_step, notes) in self.note_matrix.iter().enumerate() {
+            for (_, notes) in self.note_matrix.iter().enumerate() {
                 let mut output_line = String::new();
                 
                 // Convert active notes to ASCII characters
@@ -143,9 +142,6 @@ impl MidiProcessor {
                 // Add formatting
                 if !output_line.is_empty() {
                     output_line.push(' ');
-                }
-                if time_step % OUTPUT_LINE_LENGTH == OUTPUT_LINE_LENGTH - 1 {
-                    output_line.push('\n');
                 }
                 
                 write!(output_file, "{}", output_line).unwrap();
