@@ -1,0 +1,9 @@
+[package]
+name = "midi_ai_generator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "*"
+serde_json = "*"
+serde = {version = "*", features = ["derive"]}

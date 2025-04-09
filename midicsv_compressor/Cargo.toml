@@ -1,0 +1,6 @@
+[package]
+name = "midicsv_compressor"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
